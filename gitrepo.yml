@@ -1,7 +1,7 @@
 ---
 - hosts: 127.0.0.1
   vars_prompt:
-    - name: repo_name
+    - name: repo
       prompt: "Enter new github repo name?"
       private: no
 
@@ -15,7 +15,7 @@
         method: POST
         headers:
           Authorization: "token {{ access_token_1 }}"
-        body: '{"name":"{{ repo_name }}","auto_init":"true"}'
+        body: '{"name":"{{ repo }}","auto_init":"true"}'
         body_format: json
         validate_certs: no
         return_content: yes
@@ -29,5 +29,5 @@
 
     - name: Clone it
       git: 
-        repo: "git@github.com:kaloong/{{ repo_name }}.git"
-        dest: "{{ lookup('env','PWD') }}/{{ repo_name }}"
+        repo: "git@github.com:kaloong/{{ repo }}.git"
+        dest: "../{{ lookup('env','PWD') }}/{{ repo }}"
