@@ -17,7 +17,7 @@
           Authorization: "token {{ access_token_1 }}"
         body: '{"name":"{{ repo }}","auto_init":"true"}'
         body_format: json
-        validate_certs: no
+        validate_certs: yes
         return_content: yes
         follow_redirects: yes
         status_code: 201
@@ -30,4 +30,4 @@
     - name: Clone it
       git: 
         repo: "git@github.com:kaloong/{{ repo }}.git"
-        dest: "../{{ lookup('env','PWD') }}/{{ repo }}"
+        dest: "{{ lookup('env','PWD') }}/../{{ repo }}"
