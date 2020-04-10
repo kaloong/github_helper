@@ -1,0 +1,33 @@
+---
+- hosts: 127.0.0.1
+  vars_prompt:
+    - name: repo_name
+      prompt: "Enter new github repo name?"
+      private: no
+
+  tasks:
+    - name: Include info file
+      include_vars: info.yml
+  
+    - name: Create repo
+      uri:
+        url: https://api.github.com/user/repos
+        method: POST
+        headers:
+          Authorization: "token {{ access_token_1 }}"
+        body: '{"name":"{{ repo_name }}","auto_init":"true"}'
+        body_format: json
+        validate_certs: no
+        return_content: yes
+        follow_redirects: yes
+        status_code: 201
+      register: returned_data
+  
+    - name: Show debug
+      debug:
+        msg: "{{ returned_data}}"
+
+    - name: Clone it
+      git: 
+        repo: "git@github.com:kaloong/{{ repo_name }}.git"
+        dest: "{{ lookup('env','PWD') }}/{{ repo_name }}"
