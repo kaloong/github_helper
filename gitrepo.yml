@@ -30,4 +30,4 @@
     - name: Clone it
       git: 
         repo: "git@github.com:kaloong/{{ repo }}.git"
-        dest: "{{ lookup('env','PWD') }}/../{{ repo }}"
+        dest: "{{ lookup('env','PWD') }}/{{ repo }}"
