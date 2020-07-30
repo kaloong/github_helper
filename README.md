@@ -15,9 +15,12 @@ The vault text contains the api key for managing repo creation(only) on Github.
 
 Create aliases under .bash_profile
 
-alias gitrepo="cd $HOME/codes && ansible-playbook $HOME/.local/bin/gitrepo/gitrepo.yml --vault-password-file=$HOME/.vault_password_file" 
-alias newrepo="cd $HOME/codes && ansible-playbook $HOME/.local/bin/gitrepo/gitrepo.yml --vault-password-file=$HOME/.vault_password_file" 
+alias gitrepo="cd $HOME/codes && ansible-playbook $HOME/.local/bin/gitrepo/gitrepo.yml --vault-password-file=$HOME/.vault_password_file"
+
+alias newrepo="cd $HOME/codes && ansible-playbook $HOME/.local/bin/gitrepo/gitrepo.yml --vault-password-file=$HOME/.vault_password_file"
+
 alias codes="cd $HOME/codes"
+
 alias activate="$HOME/.local/bin/activate"
 
 todo:
